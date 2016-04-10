@@ -188,7 +188,7 @@ function default.grow_tree(pos, is_apple_tree, bad)
 	end
 
 	local x, y, z = pos.x, pos.y, pos.z
-	local height = random(4, 5)
+	local height = random(4, 9)
 	local c_tree = minetest.get_content_id("default:tree")
 	local c_leaves = minetest.get_content_id("default:leaves")
 
@@ -221,7 +221,7 @@ function default.grow_jungle_tree(pos, bad)
 	end
 
 	local x, y, z = pos.x, pos.y, pos.z
-	local height = random(8, 12)
+	local height = random(12, 19)
 	local c_air = minetest.get_content_id("air")
 	local c_ignore = minetest.get_content_id("ignore")
 	local c_jungletree = minetest.get_content_id("default:jungletree")
@@ -279,7 +279,7 @@ end
 
 function default.grow_pine_tree(pos, snow)
 	local x, y, z = pos.x, pos.y, pos.z
-	local maxy = y + random(9, 13) -- Trunk top
+	local maxy = y + random(9, 23) -- Trunk top
 
 	local c_air = minetest.get_content_id("air")
 	local c_ignore = minetest.get_content_id("ignore")
@@ -403,7 +403,7 @@ function default.grow_new_jungle_tree(pos)
 	local path = minetest.get_modpath("default") ..
 		"/schematics/jungle_tree_from_sapling.mts"
 	minetest.place_schematic({x = pos.x - 2, y = pos.y - 1, z = pos.z - 2},
-		path, "0", nil, false)
+		path, "random", nil, false)
 end
 
 
