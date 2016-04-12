@@ -1,13 +1,3 @@
--- rnd 2015, power outlet
--- used to power basic_machines using remaining available power from technic:switching_station. Just place it below mover but within 10 block distance of technich switching station. Each power outlet adds 500 to the power demand. If switching station has not enough unused power ( after technic machines demand), it wont supply power to mover.
--- outlet -> change to battery
-
-  
--- power plant block: costly to make: 8 diamondblocks, battery in center
-  -- -upgradeable, each diamondblock+lava_bucket  will add ammount of energy cells produced in cycle ( 5 seconds) and increase its internal energy storage capacity
-  -- initially produces 1 power cell, storage capacity 10, with each level of upgrade it adds 1 power cell, 10 storage capacity
-  -- when it generates power it will also fill the battery on top of it ( if any), speed of refill equalls speed of power generation, it will put all energy
-  -- possible in battery until is filled, will make recharge sound - electric discharge like in factorio game?
 local machines_timer=5
 
 -- BATTERY
@@ -32,7 +22,7 @@ end
 --[power crystal name] = energy provided
 basic_machines.energy_crystals = {
 	["basic_machines:power_cell"]=1,
-	["basic_machines:power_block"]=10,
+	["basic_machines:power_block"]=11,
 	["basic_machines:power_rod"]=100,
 }
 
@@ -53,9 +43,11 @@ battery_recharge = function(pos)
 		if energy+add_energy<=capacity then
 			stack:take_item(1); 
 			inv:set_stack("fuel", 1, stack)
+		else 
+			meta:set_string("infotext", "recharge problem: capacity " .. capacity .. ", needed " .. energy+add_energy)
 		end
 	else -- try do determine caloric value
-		local fuellist = inv:get_list("fuel");if not fuellist then return end
+		local fuellist = inv:get_list("fuel");if not fuellist then return energy end
 		local fueladd, afterfuel = minetest.get_craft_result({method = "fuel", width = 1, items = fuellist}) 
 		if fueladd.time > 0 then 
 			add_energy = fueladd.time/40;
@@ -95,7 +87,6 @@ battery_upgrade = function(pos)
 	meta:set_int("upgrade",count);
 	-- adjust capacity
 	local capacity = 10+20*count;
-	--if count == 99 then capacity = 10000 end -- ultimate upgrade for ultimate capacity
 	local maxpower = capacity*0.1;
 	
 	capacity = math.ceil(capacity*10)/10;
@@ -105,6 +96,8 @@ battery_upgrade = function(pos)
 	meta:set_float("energy",0)	
 	meta:set_string("infotext", "energy: " .. math.ceil(energy*10)/10 .. " / ".. capacity);
 end
+
+local machines_activate_furnace = minetest.registered_nodes["default:furnace"].on_metadata_inventory_put; -- this function will activate furnace
 
 minetest.register_node("basic_machines:battery", {
 	description = "battery - stores energy, generates energy from fuel, can power nearby machines, or accelerate/run furnace above it. Its upgradeable.",
@@ -153,6 +146,8 @@ minetest.register_node("basic_machines:battery", {
 						fmeta:set_float("fuel_totaltime",60);fmeta:set_float("fuel_time",0) -- add 60 second burn time to furnace
 						energy=energy-1; -- use up one energy
 						meta:set_float("energy",energy);
+						-- make furnace start if not already started
+						if node~="default:furnace_active" then machines_activate_furnace(pos) end
 						-- update energy display
 						meta:set_string("infotext", "energy: " .. math.ceil(energy*10)/10 .. " / ".. capacity);
 					end
@@ -238,7 +233,6 @@ minetest.register_node("basic_machines:battery", {
 		end
 	
 })
-
 
 
 
@@ -446,7 +440,7 @@ minetest.register_craftitem("basic_machines:power_cell", {
 })
 
 minetest.register_craftitem("basic_machines:power_block", {
-	description = "Power block - provides 10 power",
+	description = "Power block - provides 11 power",
 	inventory_image = "power_block.png",
 	stack_max = 25
 })

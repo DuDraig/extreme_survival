@@ -12,6 +12,7 @@ mobs:register_mob("esmobs:dungeon_master", {
 	passive = false,
 	damage = 4,
 	attack_type = "dogshoot",
+	pathfinding = true,
 	reach = 3,
 	shoot_interval = 2.5,
 	arrow = "esmobs:fireball",
@@ -69,6 +70,7 @@ mobs:register_mob("esmobs:tree_monster", {
 	type = "monster",
 	passive = false,
 	attack_type = "dogfight",
+	pathfinding = true,
 	--attack_type = "explode",
 	reach = 2,
 	damage = 2,
@@ -135,6 +137,7 @@ mobs:register_mob("esmobs:sand_monster", {
 	type = "monster",
 	passive = false,
 	attack_type = "dogfight",
+	pathfinding = true,
 	reach = 2,
 	damage = 3,
 	hp_min = 34,
@@ -185,6 +188,7 @@ mobs:register_mob("esmobs:stone_monster", {
 	type = "monster",
 	passive = false,
 	attack_type = "dogfight",
+	pathfinding = true,
 	reach = 2,
 	damage = 6,
 	hp_min = 32,
@@ -244,6 +248,7 @@ mobs:register_mob("esmobs:oerkki", {
 	type = "monster",
 	passive = false,
 	attack_type = "dogfight",
+	pathfinding = true,
 	reach = 2,
 	damage = 4,
 	hp_min = 8,
@@ -267,6 +272,8 @@ mobs:register_mob("esmobs:oerkki", {
 	drops = {
 		{name = "default:obsidian",
 		chance = 7, min = 1, max = 2},
+		{name = "esmobs:leather",
+		chance = 1, min = 0, max = 1},
 	},
 	water_damage = 2,
 	lava_damage = 4,
@@ -329,6 +336,7 @@ mobs:register_mob("esmobs:dirt", {
 	fear_height = 6,
 	on_rightclick = nil,
 	attack_type = "dogfight",
+	pathfinding = true,
 	group_attack = true,
 	peaceful = false,
 	animation = {
@@ -358,6 +366,7 @@ mobs:register_mob("esmobs:spider", {
 	type = "monster",
 	passive = false,
 	attack_type = "dogfight",
+	pathfinding = true,
 	damage = 3,
 	hp_min = 40,
 	hp_max = 80,
@@ -438,6 +447,7 @@ mobs:register_mob("esmobs:applmons", {
 	fear_height = 6,
 	on_rightclick = nil,
 	attack_type = "dogfight",
+	pathfinding = true,
 	group_attack = true,
 	peaceful = false,
 	animation = {
@@ -484,6 +494,7 @@ mobs:register_mob("esmobs:herobrines_bloody_ghost", {
 	fear_height = 30,
 	on_rightclick = nil,
 	attack_type = "dogfight",
+	pathfinding = true,
 	group_attack = true,
 	peaceful = false,
 	animation = {
@@ -541,6 +552,8 @@ mobs:register_mob("esmobs:paniki", {
 		chance = 6,
 		min = 1,
 		max = 2,},
+		{name = "esmobs:leather",
+		chance = 1, min = 0, max = 1},
 	},
 	armor = 60,
 	--drawtype = "side",
@@ -629,6 +642,7 @@ mobs:register_mob("esmobs:phoenix", {
 	on_rightclick = nil,
 	fly = true,
 	attack_type = "shoot",
+	pathfinding = true,
 	--attack_type = "dogfight",
 		--arrow = "throwing:arrow_entity",
 		arrow = "esmobs:fireball",
@@ -700,6 +714,7 @@ mobs:register_mob("esmobs:bomber", {
 	on_rightclick = nil,
 	fly = true,
 	attack_type = "shoot",
+	pathfinding = true,
 	--attack_type = "dogfight",
 		--arrow = "default:lava_flowing",
 		--arrow = "esmobs:bonebullet",
@@ -731,6 +746,7 @@ mobs:register_mob("esmobs:bone_monster", {
 	type = "monster",
 	passive = false,
 	attack_type = "dogshoot",
+	pathfinding = true,
 	arrow = "esmobs:bonebullet",
 	--reach = 1,
 	shoot_interval = 1.5,
@@ -821,6 +837,7 @@ mobs:register_mob("esmobs:icemon", {
 	fear_height = 30,
 	on_rightclick = nil,
 	attack_type = "dogfight",
+	pathfinding = true,
 	group_attack = true,
 	peaceful = false,
 	animation = {
@@ -869,6 +886,7 @@ mobs:register_mob("esmobs:snowmon", {
 	fear_height = 3,
 	on_rightclick = nil,
 	attack_type = "dogfight",
+	pathfinding = true,
 	group_attack = true,
 	peaceful = false,
 	animation = {
@@ -922,6 +940,7 @@ mobs:register_mob("esmobs:watermon", {
 	fear_height = 3,
 	on_rightclick = nil,
 	attack_type = "dogfight",
+	pathfinding = true,
 	group_attack = true,
 	peaceful = false,
 	animation = {
@@ -971,6 +990,7 @@ mobs:register_mob("esmobs:dirt2", {
 	fear_height = 6,
 	on_rightclick = nil,
 	attack_type = "dogfight",
+	pathfinding = true,
 	group_attack = true,
 	peaceful = false,
 	animation = {
@@ -997,6 +1017,7 @@ mobs:register_mob("esmobs:stone_monster2", {
 	type = "monster",
 	passive = false,
 	attack_type = "dogfight",
+	pathfinding = true,
 	group_attack = true,
 	peaceful = false,
 	damage = 6,
@@ -1051,6 +1072,7 @@ mobs:register_mob("esmobs:chickoboo", {
 	type = "animal",
 	passive = false,
 	attack_type = "dogfight",
+	pathfinding = true,
 	group_attack = true,
 	peaceful = false,
 	damage = 3,
@@ -1178,14 +1200,14 @@ mobs:register_spawn("esmobs:bone_monster", {"default:stone_with_iron","bones:bon
 mobs:register_spawn("esmobs:icemon", {"default:ice"}, 5, -1, 18000, 1, 3100)
 mobs:register_spawn("esmobs:snowmon", {"default:snow","default:snowblock","default:snow_block", "default:dirt_with_snow"}, 5, -1, 18000, 1, 31000)
 --mobs:register_spawn("esmobs:watermon", {"default:water_source","default:water_flowing"}, 5, -1, 18000, 1, -120)
---mobs:register_spawn("esmobs:dirt2", {"default:dirt_with_grass","default:stone", "default:stonebrick","default:cobble","es:strange_grass","es:aiden_grass"}, 5, -1, 16000, 1, -100)
+--mobs:register_spawn("esmobs:dirt2", {"default:dirt_with_grass","default:stone", "default:stonebrick","default:cobble","es:strange_grass","es:aiden_grass","group:crumbly"}, 5, -1, 16000, 1, -100)
 mobs:register_spawn("esmobs:stone_monster2", {"default:stone","bedrock2:bedrock"}, 5, -1, 18000, 1, -500)
 --mobs:register_spawn("esmobs:dungeon_master", {"default:stone"}, 2, 0, 7000, 1, -70)
 mobs:register_spawn("esmobs:tree_monster", {"default:leaves", "default:jungleleaves","default:dirt", "default:jungletree"}, 5, 0, 18000, 1, 31000)
 mobs:register_spawn("esmobs:sand_monster", {"default:sand", "meru:stone","group:sand"},4, -1, 18000, 1, 31000)
 mobs:register_spawn("esmobs:stone_monster", {"default:stone", "bedrock2:bedrock"}, 5, -1, 12000, 4, 31000)
 mobs:register_spawn("esmobs:oerkki", { "default:stone"}, 4, -1, 2000, 1, -70)
-mobs:register_spawn("esmobs:dirt", {"default:dirt_with_grass","default:stone", "default:stonebrick","default:cobble","es:strange_grass","es:aiden_grass"}, 5, -1, 15000, 1, 31000)
+mobs:register_spawn("esmobs:dirt", {"default:dirt_with_grass","default:stone", "default:stonebrick","default:cobble","es:strange_grass","es:dry_dirt","group:crumbly"}, 5, -1, 15000, 1, 31000)
 --mobs:register_spawn("esmobs:phoenix",{"air"}, 4,-1, 16000, 1, 90,false)
 mobs:register_spawn("esmobs:paniki", {"air", "default:stone_with_coal", "default:stone"}, 5,-1, 14000, 1, 20,false)
 --mobs:register_spawn("esmobs:bomber", {"air"}, 4,-1, 18000, 1, 90,false)
