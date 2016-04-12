@@ -252,12 +252,27 @@ minetest.register_node("es:hgglass", {
 	tiles = {"default_glass.png", "default_glass_detail.png"},
 	inventory_image = minetest.inventorycube("default_glass.png"),
 	paramtype = "light",
+	buildable_to = false,
+	pointable = false,
 	sunlight_propagates = true,
 	is_ground_content = false,
 	groups = {immortal=1,cracky=0,not_in_creative_inventory = 1},
 	sounds = default.node_sound_glass_defaults(),
 })
 
+minetest.register_node("es:hgglass2", {
+	description = "High Density Glass II",
+	drawtype = "glasslike",
+	tiles = { "default_obsidian_glass.png"},
+	inventory_image = minetest.inventorycube("default_obsidian_glass.png"),
+	paramtype = "light",
+	buildable_to = false,
+	pointable = false,
+	sunlight_propagates = true,
+	is_ground_content = false,
+	groups = {immortal=1,cracky=0,not_in_creative_inventory = 1},
+	sounds = default.node_sound_glass_defaults(),
+})
 minetest.register_node("es:steelblock", {
 	description = "High Density Steel Block",
 	tiles = {"default_steel_block.png"},
@@ -612,7 +627,7 @@ minetest.register_node("es:strange_shrub", {
 	sunlight_propagates = true,
 	walkable = false,
 	tiles = {"default_jungleleaves.png^default_dry_shrub.png^[colorize:#0000FF:170"},
-	groups = {snappy = 3, leafdecay = 3, flammable = 2, leaves = 1},
+	groups = {snappy = 3, flammable = 2, leaves = 1},
 	--[[
 	drop = {
 		max_items = 1,
@@ -630,7 +645,7 @@ minetest.register_node("es:strange_shrub", {
 		}
 	},
 	]]
-	sounds = default.node_sound_stone_defaults(),
+	sounds = default.node_sound_leaves_defaults(),
 
 	--after_place_node = default.after_place_leaves,
 })
@@ -639,7 +654,7 @@ minetest.register_node("es:strange_clay_blue", {
 	description = "Strange Clay",
 	tiles = {"default_clay.png^[colorize:#00BBFF:180"},
 	groups = {crumbly = 3},
-	drop = 'default:clay_lump 4',
+	--drop = 'default:clay_lump 4',
 	sounds = default.node_sound_dirt_defaults(),
 })
 
@@ -648,7 +663,7 @@ minetest.register_node("es:strange_clay_red", {
 	--tiles = {"default_clay.png^[colorize:#FA5858:180"},
 	tiles = {"default_clay.png^[colorize:#8A0829:180"},
 	groups = {crumbly = 3},
-	drop = 'default:clay_lump 4',
+	--drop = 'default:clay_lump 4',
 	sounds = default.node_sound_dirt_defaults(),
 })
 
@@ -657,7 +672,7 @@ minetest.register_node("es:strange_clay_maroon", {
 	--tiles = {"default_clay.png^[colorize:#8A0808:180"},
 	tiles = {"default_clay.png^[colorize:#610B21:180"},
 	groups = {crumbly = 3},
-	drop = 'default:clay_lump 4',
+	--drop = 'default:clay_lump 4',
 	sounds = default.node_sound_dirt_defaults(),
 })
 
